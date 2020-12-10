@@ -3,11 +3,14 @@ import pl.coderslab.CafeBiba.entity.Book;
 
 import java.util.List;
 
+
 public interface BookService  {
 
-    void save(Book book);
-    Book findById(Long id);
-    boolean deleteById(Long id);
-    List<Book> findAll();
+    List<Book> viewAllBooks();
+    Book findBookById(Long id);
+    void addBook(Book book);
+    void deleteBookById(Long id);
+
+
 
 }

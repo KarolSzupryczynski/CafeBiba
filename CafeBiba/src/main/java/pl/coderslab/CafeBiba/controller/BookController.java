@@ -1,37 +1,66 @@
 package pl.coderslab.CafeBiba.controller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.CafeBiba.entity.Book;
+import pl.coderslab.CafeBiba.service.BookServiceImpl;
 
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.PostMapping;
-        import org.springframework.web.bind.annotation.RequestMapping;
-        import org.springframework.web.bind.annotation.ResponseBody;
-        import pl.coderslab.CafeBiba.dao.BookDao;
-        import pl.coderslab.CafeBiba.entity.Book;
-        import pl.coderslab.CafeBiba.service.BookService;
 
 @Controller
-@RequestMapping("/bookview")
 public class BookController {
 
-    private BookService bookService;
+    private final BookServiceImpl bookServiceImpl;
 
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public BookController(BookServiceImpl bookServiceImpl) {
+        this.bookServiceImpl = bookServiceImpl;
     }
 
+    @GetMapping("/books")
+    public String viewAllBooks(Model model) {
+        model.addAttribute("books", bookServiceImpl.viewAllBooks());
+        return "/viewbook";
+    }
 
-    @GetMapping
-    public String form() {
+    @GetMapping("/viewbook/{id}")
+    public String findBookById(Model model, @PathVariable Long id) {
+        model.addAttribute("books", bookServiceImpl.findBookById(id));
+        return "/viewsinglebook";
+    }
+
+    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    public String addBook(Model model) {
+        model.addAttribute("book", new Book());
         return "/form";
     }
+    @RequestMapping(value = "/form", method = RequestMethod.POST)
+    public String saveBook(Book book) {
+        bookServiceImpl.addBook(book);
+        return "/addsuccess";
+    }
 
-    @PostMapping
-    @ResponseBody
-    public String form(Book book) {
-        bookService.save(book);
-        return book.toString();
+    @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
+        public String editBookById(Model model, @PathVariable long id) {
+        model.addAttribute("book", bookServiceImpl.findBookById(id));
+        Logger logger = LoggerFactory.getLogger(BookController.class);
+        logger.info("pobrano id " + bookServiceImpl.findBookById(id));
+        return "editform";
+    }
+
+    @RequestMapping(value = "/editform", method = RequestMethod.POST)
+    public String editBook(Book book) {
+        bookServiceImpl.addBook(book);
+        return "redirect:/books";
+    }
+
+
+    @RequestMapping("/delete/{id}")
+    public String deleteBookById(@PathVariable long id) {
+        bookServiceImpl.deleteBookById(id);
+        return "redirect:/books";
     }
 }

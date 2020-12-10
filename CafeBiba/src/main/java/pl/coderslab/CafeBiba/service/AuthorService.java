@@ -5,8 +5,7 @@ import pl.coderslab.CafeBiba.entity.Author;
 import java.util.List;
 
 public interface AuthorService {
-    void save(Author author);
-    Author findById(Long id);
-    List<Author> findAll();
-
+    List<Author> viewAllAuthors();
+    Author findAuthorById(Long id);
 }
+

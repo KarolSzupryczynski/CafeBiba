@@ -1,14 +1,21 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: karols
+  Date: 09.12.2020
+  Time: 01:12
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"
+           uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Dodaj książkę</title>
+    <title>Book add</title>
 </head>
 <body>
-
-<form:form modelAttribute="book" method="post" action="/form">
-
+<c:url var="edit_url" value="/editform"/>
+<form:form method="post" modelAttribute="book" action="${edit_url}">
     <section>
         <label>Dodaj tytuł:</label>
         <form:hidden path="id"/>
@@ -17,7 +24,7 @@
     </section>
     <section>
         <label>Dodaj autora:</label>
-        <form:input path="author.name" placeholder="nazwisko imię"/>
+        <form:input path="authors.name" placeholder="nazwisko imię"/>
         <form:errors path="author"/>
     </section>
     <section>
@@ -36,12 +43,7 @@
         <form:errors path="publisher"/>
     </section>
     <section>
-        <label>Dodaj kategorię:</label>
-        <form:input path="category.name" placeholder="kategoria"/>
-        <form:errors path="category"/>
-    </section>
-    <section>
-        <button type="submit" value="Save">Dodaj książkę</button>
+        <button type="submit" value="Save">Edytuj książke</button>
     </section>
 </form:form>
 
