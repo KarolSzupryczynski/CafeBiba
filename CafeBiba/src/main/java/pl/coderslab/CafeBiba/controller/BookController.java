@@ -55,7 +55,7 @@ public class BookController {
 
     @RequestMapping(value = "/editform", method = RequestMethod.POST)
     public String editBook(Book book) {
-        bookServiceImpl.addBook(book);
+            bookServiceImpl.update(book);
         return "redirect:/books";
     }
 

@@ -13,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author implements EntityModel  {
-    //@OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //private List<Book> books;
+    //TODO @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //TODO private List<Book> books;
 
     @Column(name = "name")
     private String name;

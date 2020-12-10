@@ -4,13 +4,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.CafeBiba.entity.Book;
 import pl.coderslab.CafeBiba.repository.BookRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Transactional
 @Service
 public class BookServiceImpl implements BookService {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private BookRepository bookRepository;
@@ -38,5 +45,15 @@ public class BookServiceImpl implements BookService {
         Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
         logger.info("przekazano do usunięcia");
         bookRepository.delete(book);
+    }
+    @Override
+    public void update(Book book) {
+        book.setTitle(book.getTitle());
+        book.setAuthor(book.getAuthor());
+        book.setIsbn(book.getIsbn());
+        book.setIssueDate(book.getIssueDate());
+        book.setPublisher(book.getPublisher());
+        book.setCategory(book.getCategory());
+        entityManager.merge(book);
     }
 }
