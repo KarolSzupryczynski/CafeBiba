@@ -32,7 +32,7 @@ public class Book implements EntityModel{
     @Column(name="publisher")
     private String publisher;
 
-    @ManyToOne (fetch = FetchType.LAZY, optional = true, cascade = CascadeType.PERSIST)
+    @ManyToOne (fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -41,12 +41,6 @@ public class Book implements EntityModel{
     @Column(name="id")
     private Long id;
 
-    public Author getAuthor() {
-        return author;
-    }
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
 //TODO   private boolean status;
 //   private String tempOwner;
 

@@ -1,5 +1,7 @@
 package pl.coderslab.CafeBiba.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.CafeBiba.entity.Book;
@@ -33,6 +35,8 @@ public class BookServiceImpl implements BookService {
     public void deleteBookById(Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+        logger.info("przekazano do usunięcia");
         bookRepository.delete(book);
     }
 }

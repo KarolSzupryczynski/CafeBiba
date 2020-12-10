@@ -12,10 +12,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Transactional
+
 public class Category implements EntityModel{
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<Book> books;
+   // @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   // private List<Book> books;
 
     @Column(name = "name")
     private String name;
