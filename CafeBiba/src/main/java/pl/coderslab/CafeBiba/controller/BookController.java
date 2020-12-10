@@ -29,6 +29,8 @@ public class BookController {
     @GetMapping("/viewbook/{id}")
     public String findBookById(Model model, @PathVariable Long id) {
         model.addAttribute("books", bookServiceImpl.findBookById(id));
+        Logger logger = LoggerFactory.getLogger(BookController.class);
+        logger.info("pobrano id " + bookServiceImpl.findBookById(id));
         return "/viewsinglebook";
     }
 
@@ -44,7 +46,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
-        public String editBookById(Model model, @PathVariable long id) {
+    public String editBookById(Model model, @PathVariable Long id) {
         model.addAttribute("book", bookServiceImpl.findBookById(id));
         Logger logger = LoggerFactory.getLogger(BookController.class);
         logger.info("pobrano id " + bookServiceImpl.findBookById(id));
@@ -56,7 +58,6 @@ public class BookController {
         bookServiceImpl.addBook(book);
         return "redirect:/books";
     }
-
 
     @RequestMapping("/delete/{id}")
     public String deleteBookById(@PathVariable long id) {

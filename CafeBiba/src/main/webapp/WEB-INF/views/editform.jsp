@@ -24,7 +24,7 @@
     </section>
     <section>
         <label>Dodaj autora:</label>
-        <form:input path="authors.name" placeholder="nazwisko imię"/>
+        <form:input path="author.name" placeholder="nazwisko imię"/>
         <form:errors path="author"/>
     </section>
     <section>
@@ -43,6 +43,11 @@
         <form:errors path="publisher"/>
     </section>
     <section>
+    <section>
+        <label>Dodaj kategorię:</label>
+        <form:input path="category.name" placeholder="kategoria"/>
+        <form:errors path="category"/>
+        </section>
         <button type="submit" value="Save">Edytuj książke</button>
     </section>
 </form:form>

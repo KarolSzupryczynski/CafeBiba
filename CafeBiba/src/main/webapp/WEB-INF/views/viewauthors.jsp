@@ -17,6 +17,7 @@
     <c:forEach items="${authors}" var="authors">
         <li>
             <h4>${authors.name}</h4>
+            <a href="<c:url value="/delete/${authors.id}" />">Usuń</a>
         </li>
     </c:forEach>
 </ul>

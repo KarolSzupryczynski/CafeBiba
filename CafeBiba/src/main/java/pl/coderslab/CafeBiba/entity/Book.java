@@ -1,6 +1,8 @@
 package pl.coderslab.CafeBiba.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,7 +10,8 @@ import javax.persistence.*;
 
 @Table(name="books")
 @Entity
-@Data
+@Getter
+@Setter
 @Transactional
 public class Book implements EntityModel{
 
@@ -38,6 +41,12 @@ public class Book implements EntityModel{
     @Column(name="id")
     private Long id;
 
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 //TODO   private boolean status;
 //   private String tempOwner;
 

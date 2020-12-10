@@ -12,7 +12,7 @@
         <li>
             <h4>Tytuł:${books.title}</h4>
             <p>Autor: ${books.author.name}</p>
-            <p>ISBN: ${books.isbn}</p>
+            <p>Kategoria: ${books.category.name}</p>
             <a href="<c:url value="/editform/${books.id}" />">Edytuj</a>
             <a href="<c:url value="/viewbook/${books.id}" />">Szczegóły</a>
 
