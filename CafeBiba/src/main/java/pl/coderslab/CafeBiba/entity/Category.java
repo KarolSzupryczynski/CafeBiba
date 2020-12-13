@@ -1,21 +1,20 @@
 package pl.coderslab.CafeBiba.entity;
 
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Table(name="categories")
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 public class Category implements EntityModel{
-   // @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-   // private List<Book> books;
+
+    @ToString.Exclude
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private List<Book> books;
 
     @Column(name = "name")
     private String name;

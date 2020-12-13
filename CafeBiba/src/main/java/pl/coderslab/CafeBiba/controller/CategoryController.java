@@ -31,6 +31,7 @@ public class CategoryController {
         model.addAttribute("categories", categoryServiceImpl.findCategoryById(id));
         return "/viewsinglecategory";
     }
+
     @ModelAttribute("categories")
     public Collection<Category> categories() {
         return this.categoryServiceImpl.viewAllCategories();

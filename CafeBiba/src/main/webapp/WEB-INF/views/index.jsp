@@ -13,14 +13,14 @@
 </head>
 <body>
 <c:url var="edit_url" value="/main"/>
-<ul>
 
-        <li>
+
+
             <a href="<c:url value="/form" />">Dodaj książkę</a>
             <a href="<c:url value="/books" />">Moje książki</a>
             <a href="<c:url value="/authors" />">Autorzy</a>
             <a href="<c:url value="/categories" />">Kategorie</a>
-        </li>
-</ul>
+
+
 </body>
 </html>

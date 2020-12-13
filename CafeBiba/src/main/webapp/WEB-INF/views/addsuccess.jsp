@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Dodano książkę</title>
 </head>
 <body>
-            <h1>książka dodana</h1>
+            <h1>Książka dodana</h1>
             <a href="${pageContext.request.contextPath}/form">Dodaj następną książkę</a>
             <a href="${pageContext.request.contextPath}/books">Wróć do listy książek</a>
 </body>

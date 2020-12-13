@@ -6,6 +6,7 @@ import pl.coderslab.CafeBiba.entity.Category;
 import pl.coderslab.CafeBiba.repository.CategoryRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -23,4 +24,8 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category Id:" + id));
     }
+//    @Override
+//    public String categoryShortcutMaker (Long id){
+//     return  null;
+//    }
 }

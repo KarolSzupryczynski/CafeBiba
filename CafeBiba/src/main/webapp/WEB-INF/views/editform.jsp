@@ -11,7 +11,7 @@
            uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Book add</title>
+    <title>Edytuj książkę</title>
 </head>
 <body>
 <c:url var="edit_url" value="/editform"/>

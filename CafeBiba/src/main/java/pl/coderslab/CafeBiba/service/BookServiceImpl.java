@@ -7,17 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.CafeBiba.entity.Book;
 import pl.coderslab.CafeBiba.repository.BookRepository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Transactional
 @Service
 public class BookServiceImpl implements BookService {
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Autowired
     private BookRepository bookRepository;
@@ -54,6 +48,6 @@ public class BookServiceImpl implements BookService {
         book.setIssueDate(book.getIssueDate());
         book.setPublisher(book.getPublisher());
         book.setCategory(book.getCategory());
-        entityManager.merge(book);
+        bookRepository.save(book);
     }
 }
